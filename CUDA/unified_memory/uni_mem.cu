@@ -1,6 +1,7 @@
 #include <iostream>
 #include <math.h>
  
+// CUDA kernels are not written in main. Main is exclusive for the host (cpu)
 // CUDA kernel to add elements of two arrays
 __global__
 void add(int n, float *x, float *y)

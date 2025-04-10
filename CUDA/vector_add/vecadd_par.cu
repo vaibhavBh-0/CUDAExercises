@@ -2,6 +2,10 @@
 #define N 512000
 
 __global__ void add(int *a, int *b, int *c) {
+  // blockIdx is a predefined block /grid variable part of CUDA runtime.
+
+  // blockIdx.x is another runtime different constant. 
+  // It points to the current index of the tensor.
   c[blockIdx.x] = a[blockIdx.x] + b[blockIdx.x];
 }
 
@@ -36,7 +40,7 @@ int main(void) {
   cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
   cudaMemcpy(d_b, b, size, cudaMemcpyHostToDevice);
 
-  // Launch add() kernel on GPU
+  // Launch add() kernel on GPU with N Blocks on device. With block size of 1.
   add<<<N,1>>>(d_a, d_b, d_c);
 
   // Copy result back to host
