@@ -37,7 +37,7 @@ run_vector_add_serial: vector_add_serial
 vector_add_parallel: vector_add/vecadd_par.cu
 	$(NVCC) $(CUDAFLAGS) $^ -o $@
 
-run_vector_add_parallel:: vector_add_parallel
+run_vector_add_parallel: vector_add_parallel
 	./$<
 
 # Parallel Block 
